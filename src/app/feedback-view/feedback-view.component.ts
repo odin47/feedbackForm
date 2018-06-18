@@ -25,6 +25,7 @@ export class FeedbackViewComponent implements OnInit {
  public userAnswers: FormArray;
  public userInfo = {};
  public managerName = {};
+ public managerAlias;
    constructor(private questionService: FeedbackDataServiceService, private fb: FormBuilder, private dialog: MatDialog) {
      console.log('constructor....');
     }
@@ -33,8 +34,10 @@ export class FeedbackViewComponent implements OnInit {
     this.spinnerFlag = true;
     this.questionService.getQuestions().subscribe(data => {this.questions = (data as any).question;
       console.log(data);
+
       this.userInfo = (data as any).userInfo;
       this.managerName = (data as any).managerName;
+      this.managerAlias = (data as any).aliasManager;
             for ( let i = 0; i < this.questions.length; i++) {
               if ( this.questionTypeTemp === this.questions[i].type) {
 
@@ -57,14 +60,14 @@ export class FeedbackViewComponent implements OnInit {
               const submittedAnswer = {
                   userQuestionID: updatedForm.controls[i].controls.userQuestionAnswers.controls[j].controls.questionID.value,
                   userAnswerID: updatedForm.controls[i].controls.userQuestionAnswers.controls[j].controls.answer_360.value,
-                  userID: 'dpod'
+                  userID: this.managerAlias
               };
               submittedAnswerArr.push(submittedAnswer);
           }
            }
             const finalSubmission = {
              givenFeedback: submittedAnswerArr,
-             userID: 'dpod'
+             userID: this.managerAlias
            };
      console.log('On submit working!!!!!!!!!!');
      // console.log(finalSubmission);
