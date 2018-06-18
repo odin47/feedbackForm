@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+ @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+ .mat-toolbar.mat-primary {
+    background: #00a1e1;
+    color: #fff;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #00a1e1;
+}
+
+/*.head h1 {
+    background: url('/assets/sagLogo.png') no-repeat top left;
+}*/
+
+.head h1 a span {
+    color: transparent
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #00a1e1;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #00a1e1;
+}
+
+.mat-radio-ripple .mat-ripple-element {
+    background-color: #00a1e1;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: #00a1e1;
+}
+
+.mat-fab.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
+    background-color: #00a1e1;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.feedbackHeader {
+    text-align: center;
+}
+
+.buttonContainer {
+    text-align: center;
+    margin: 20px;
+}
+
+.centered {
+  margin-top: 350px;
+  margin-left: 50%;
+  position: relative;
+  text-align: center;
+  top: 50%;
+  width: 20%; 
+}
+
+.signal {
+    border: 5px solid #00a1e1;
+    border-radius: 30px;
+    height: 30px;
+    left: 50%;
+    margin: -15px 0 0 -15px;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    width: 30px;
+ 
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulsate {
+    0% {
+      transform: scale(.1);
+      opacity: 0.0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+}

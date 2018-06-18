@@ -1,0 +1,71 @@
+
+<!--<mat-spinner *ngIf = "spinnerFlag"></mat-spinner>-->
+
+<div class="head">
+  <h1>
+    <a href="http://localhost:4200/all">
+      <img src='/assets/sagLogo.png' alt="feedback 360">
+    </a>
+  </h1>
+  </div>
+  <div style="text-align: center">
+    <p>Hi! <span style="font-weight: bold">{{userInfo}}</span>, Please give feedback to your manager <span style="font-weight: bold">{{managerName}}</span></p>
+  </div>
+  
+<!--<mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <span>Feedback 360</span>
+      
+          <span class="example-spacer"></span>
+          
+          <button mat-button>About</button>
+          <button mat-button>Services</button>
+          <button mat-button>Contact</button>
+        </mat-toolbar-row>
+      </mat-toolbar>-->
+ <div *ngIf = "userFeedback">     
+<form novalidate [formGroup] = "userFeedback">
+<h1 class="feedbackHeader">Feedback 360</h1>
+
+<div  formArrayName = "userQuestionsType" *ngFor = "let type of userFeedback.controls.userQuestionsType.controls let i = index">
+<mat-accordion  [formGroupName] = "i">
+ <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          <div>
+         <h5>{{type.get('categoryType').value| uppercase}}</h5>
+        </div>
+      </mat-panel-title>
+    <!--  <mat-panel-description>
+        Enter {{type.get('categoryType').value}}
+      </mat-panel-description>-->
+    </mat-expansion-panel-header>
+    <ul formArrayName = "userQuestionAnswers" *ngFor = "let question of type.controls.userQuestionAnswers.controls let j = index">
+      <div formGroupName = "{{j}}">
+    
+      <li>{{question.get('question_360').value}}</li>
+      <mat-radio-group formControlName="answer_360">
+        <mat-radio-button [value]="1" [checked]="question.userAnswer===1">1(poor)</mat-radio-button>
+        <mat-radio-button [value]="2" [checked]="question.userAnswer===2">2</mat-radio-button>
+        <mat-radio-button [value]="3" [checked]="question.userAnswer===3">3</mat-radio-button>
+        <mat-radio-button [value]="4" [checked]="question.userAnswer===4">4</mat-radio-button>
+        <mat-radio-button [value]="5" [checked]="question.userAnswer===5">5(excellent)</mat-radio-button>
+      </mat-radio-group>
+      
+      </div>
+      </ul>
+    
+    </mat-expansion-panel>
+     </mat-accordion>
+    
+  </div>
+  <div class="buttonContainer">
+      <button mat-raised-button (click)="resetForm()">Reset</button>
+      <!--<button mat-raised-button color="primary" type="submit" [disabled]="!userFeedback.valid">Submit</button>-->
+      <button mat-raised-button color="primary" type="submit" (click) = "onSubmit(userFeedback.controls.userQuestionsType)">Submit</button>
+  </div>
+
+</form>
+</div>
+<!--<mat-progress-spinner  class="centered" mode="indeterminate" *ngIf = "spinnerFlag"></mat-progress-spinner>-->
+<div class="signal" *ngIf = "spinnerFlag"></div>

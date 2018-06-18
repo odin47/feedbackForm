@@ -1,0 +1,30 @@
+.mat-ink-bar {
+    background-color: #00a1e1;
+}
+
+.chart-container {
+    margin: 10px;
+    }
+
+#bloc1 {
+    display: inline-block;
+    width: 48%;
+    margin: 10px;
+}
+
+#bloc2 {
+    display: inline-block;
+    width: 48%;
+    margin: 10px;
+}
+
+.mat-form-field {
+       width: 34%;
+}
+
+
+element.style {
+
+    top: 203.813px;
+
+}

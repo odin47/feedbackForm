@@ -1,0 +1,29 @@
+<div class="head">
+  <h1>
+    <a href="http://localhost:4200/all">
+      <img src='/assets/sagLogo.png' alt="feedback 360">
+    </a>
+  </h1>
+  </div>
+  <h1 style="text-align: center">Admin Panel</h1>
+
+  <mat-form-field>
+    <mat-select placeholder="Reporting Manager" [(value)]="selected">
+      <mat-option *ngFor="let manager of reportingManagers" [value]="manager.personAlias" (click)="getManagerAlias()">
+        {{ manager.personFullName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  {{selected}}
+  <mat-tab-group>
+    <mat-tab label="Reports">
+      <h1>Reports for Admin</h1>
+      <div id="bloc1"><canvas id="myBarChart"></canvas></div>
+      <div id="bloc2"><canvas id="myLineChart"></canvas></div>
+
+    </mat-tab>
+    <mat-tab label="About">
+      <h1>About Page</h1>
+      <p>...</p>
+    </mat-tab>
+  </mat-tab-group>
